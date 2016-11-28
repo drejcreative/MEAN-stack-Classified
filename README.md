@@ -7,12 +7,12 @@ MEAN stack Classified with complete backend and frontend
 * Git for version control
 
 ## What we need to have before start
-4. [NodeJS](https://nodejs.org/en/)
-4. [MongoDB](https://www.mongodb.com/download-center?jmp=nav#community)
-`npm install -g express`
-`npm install -g express-generator`
-`npm install -g bower`
-`npm install -g nodemon`
+[NodeJS](https://nodejs.org/en/)<br />
+[MongoDB](https://www.mongodb.com/download-center?jmp=nav#community)<br />
+`npm install -g express`<br />
+`npm install -g express-generator`<br />
+`npm install -g bower`<br />
+`npm install -g nodemon`<br />
 
 ### On Frontend Client side 
 open `cmd` and type `npm-install` and `bower-install`
