@@ -7,8 +7,8 @@ MEAN stack Classified with complete backend and frontend
 * Git for version control
 
 ## What we need to have before start
-[NodeJS](https://nodejs.org/en/)
-[MongoDB](https://www.mongodb.com/download-center?jmp=nav#community)
+4. [NodeJS](https://nodejs.org/en/)
+4. [MongoDB](https://www.mongodb.com/download-center?jmp=nav#community)
 `npm install -g express`
 `npm install -g express-generator`
 `npm install -g bower`
