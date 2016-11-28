@@ -1,0 +1,129 @@
+
+<!--
+=============================================
+  Toolbar
+=============================================
+-->
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <p><strong>Angular Classifield</strong></p>
+      <md-button ng-click="cls.openSidebar()"><i class="fa fa-plus-circle" aria-hidden="true"></i>New Classifield</md-button>
+      <md-button ng-click="showFilter = !showFilter"><i class="fa fa-search" aria-hidden="true"></i>Filter</md-button>
+    </div>
+  </md-toolbar>
+  <!--End of toolbar-->
+
+  <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+
+<!--
+=============================================
+  Filters
+=============================================
+-->
+  <div class="filters" layout="row" layout-align="center center" ng-show="showFilter">
+    <md-input-container layout="row">
+      <label>Enter Search Term</label>
+      <input type="text" name="name"
+            ng-model="classifieldFilter">
+    </md-input-container>
+
+    <md-input-container>
+      <label>Categoiries</label>
+      <md-select ng-model="categoryList">
+        <md-option ng-repeat="ctgry in cls.classifields | unique: 'categories' "
+                   value="{{ ctgry.categories[0] }}">
+                   {{ ctgry.categories[0] }}
+        </md-option>
+      </md-select>
+    </md-input-container>
+
+    <div layout="row" class="sort">
+      <span class="sort__text">Sort by:</span>
+       <a class="sort__link" href="#" ng-click="cls.sortType = 'title'; sortReverse = !sortReverse">
+          name
+          <span ng-show="cls.sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="cls.sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </div>
+    <div layout="row" class="sort">
+       <a class="sort__link" href="#" ng-click="cls.sortType = 'price'; sortReverse = !sortReverse">
+          price
+          <span ng-show="cls.sortType == 'price' && !sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="cls.sortType == 'price' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </div>
+
+    <div layout="row">
+      <md-button class="md-warn"
+                 ng-click="classifieldFilter = ''; categoryList = ''">
+        Clear
+      </md-button>
+    </div>
+    <div layout="row">
+      <md-button class="md-warn md-raised"
+                 ng-click="showFilter = false">
+        Close
+      </md-button>
+    </div>
+  </div>
+<!--
+=============================================
+  Sidenav
+=============================================
+-->
+  <ui-view></ui-view>
+<!--
+=============================================
+  Cards
+=============================================
+-->
+  <md-content class="md-padding" layout="row" layout-wrap>
+
+    <md-card class="card" dir-paginate="c in cls.classifields |
+                                        filter: classifieldFilter |
+                                        filter: categoryList |
+                                        orderBy: cls.sortType:sortReverse |
+                                        itemsPerPage:9">
+      <img ng-src="{{ c.image }}" alt="" />
+      <md-card-content>
+         <div class="cls-info">
+           <h2 class="md-tittle">{{ c.title }}</h2>
+           <h4>{{ c.categories[0] }}</h4>
+           <h3>{{ c.price | currency }}</h3>
+           <h5>{{ c.posted | date }}</h5>
+           <p>{{ c.description }}</p>
+         </div>
+         <div layout="row">
+           <md-button class="md-primary md-raised" ng-click="showContact = !showContact">Contact</md-button>
+           <md-button class="md-primary" ng-click="showAdmin= !showAdmin">Admin</md-button>
+         </div>
+         <div class="cls-contact" ng-show="showContact">
+           <p><i class="fa fa-user" aria-hidden="true"></i>{{ c.contact.name }}</p>
+           <p><i class="fa fa-phone" aria-hidden="true"></i>{{ c.contact.phone }}</p>
+           <p><i class="fa fa-envelope" aria-hidden="true"></i>{{ c.contact.email }}</p>
+         </div>
+         <div class="cls-admin" ng-if="showAdmin">
+           <h3>Admin</h3>
+           <div layout="row">
+             <md-button ng-click="cls.editClassifield(c)" class="md-primary">Edit</md-button>
+             <md-button ng-click="cls.deleteClassifield($event, c)" class="md-warn">Delete</md-button>
+           </div>
+         </div>
+      </md-card-content>
+      <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-icon-button" aria-label="Favorite">
+            <md-icon md-svg-icon="images/favorite-heart-button.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Share">
+            <md-icon md-svg-icon="images/share-option.svg"></md-icon>
+          </md-button>
+      </md-card-actions>
+    </md-card>
+
+  </md-content>
+  <!--End of Content-->
+  <dir-pagination-controls
+         max-size="6"
+         direction-links="true"
+         boundary-links="true" >
+  </dir-pagination-controls>

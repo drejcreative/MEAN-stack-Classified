@@ -1,0 +1,118 @@
+@import "../../bower_components/angular-material/angular-material.scss";
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+.clearfix {
+  &:after,
+  &:before {
+    content: '';
+    display: table;
+  }
+  &:after {
+    clear: both;
+    display: block;
+  }
+}//.clearfix
+
+/*=============================================
+  Toolbar styling
+=============================================*/
+.md-toolbar-tools {
+  i {
+    padding-right: 10px;
+  }
+}//.md-toolbar-tools
+/*=============================================
+  Cards styling
+=============================================*/
+.card {
+  width: 32%;
+  display: inline-block;
+  &.ng-enter {
+    transition: 2s all;
+    opacity: 0;
+    &.ng-enter-active {
+      opacity: 1;
+    }
+  }//.ng-enter
+  &.ng-move {
+    transition: 2s all;
+    opacity: 0;
+    &.ng-move-active {
+      opacity: 1;
+    }
+  }//.ng-move
+  &.ng-leave {
+    animation: 0.6s fade_classifield;
+  }
+  &:hover {
+    background: lighten(#FF9800, 48);
+  }
+}
+
+md-progress-circular {
+    left: 50%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+/*=============================================
+  Pagination styling
+=============================================*/
+.pagination {
+  text-align: center;
+  li {
+    display: inline-block;
+    &:first-child a,
+    &:nth-child(2) a {
+      font-size: 30px;
+      color: rgb(255,152,0);
+    }
+    &:last-child a,
+    &:nth-last-child(2) a {
+      font-size: 30px;
+      color: rgb(255,152,0);
+    }
+    &.active a {
+      color: rgba(0,0,0,0.87);
+      background-color: rgb(255,152,0);
+      box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+      &:hover {
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+        background-color: darken(#ff9800, 10);
+      }
+    }
+    a{
+      display: inline-block;
+      @extend .md-button;
+      @extend .md-primary;
+      &:hover {
+        background-color: rgba(158,158,158,0.2);
+      }
+    }
+  }
+}
+/*=============================================
+  Sort styling
+=============================================*/
+.sort {
+  &__text {
+    padding-right: 10px;
+    margin-left: 10px;
+  }
+  &__link {
+    padding-right: 10px;
+    text-decoration: none;
+    color: rgb(255,87,34);
+  }
+}//sort
+/*=============================================
+  keyframes
+=============================================*/
+@keyframes fade_classifield {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

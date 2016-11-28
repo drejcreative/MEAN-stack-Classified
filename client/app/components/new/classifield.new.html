@@ -1,0 +1,63 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
+            md-is-open="cls.sidenavOpen">
+  <md-toolbar>
+    <h2 class="md-toolbar-tools">Add a Classifield</h2>
+  </md-toolbar>
+  <md-content layout-padding>
+    <form>
+      <div layout="row">
+        <md-input-container>
+          <label for="title">Title</label>
+          <input type="text" id="title"
+                 ng-model="clsdata.title"
+                 md-autofocus required md-maxlength="50">
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container>
+          <label for="price">Price</label>
+          <input type="number" id="price"
+                 ng-model="clsdata.price" required>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container>
+          <label for="description">Description</label>
+          <textarea type="text" id="description"
+                  ng-model="clsdata.description" required md-maxlength="250">
+          </textarea>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container flex="65">
+             <label for="categories">Categorie</label>
+             <md-select ng-model="clsdata.categories" required>
+               <md-option ng-repeat="ctgry in cls.categories" value="{{ ctgry }}">
+                 {{ ctgry }}
+               </md-option>
+             </md-select>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container>
+          <label for="image">Image Link</label>
+          <input type="text" id="image"
+                  ng-model="clsdata.image" required>
+        </md-input-container>
+      </div>
+      <md-button class="md-primary md-raised"
+                ng-click="cls.saveClassifield(clsdata)"
+                ng-if="!cls.editing">
+        Save
+      </md-button>
+      <md-button class="md-primary md-raised"
+                 ng-if="cls.editing"
+                 ng-click="cls.saveEdit()">
+        Save Edit
+      </md-button>
+      <md-button class="md-warn" ng-click="cls.closeSidebar()">
+        Cancel
+      </md-button>
+    </form><!--Form-->
+  </md-content>
+</md-sidenav>
