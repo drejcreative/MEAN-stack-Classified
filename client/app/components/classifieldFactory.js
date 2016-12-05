@@ -21,11 +21,11 @@
       };
 
       dataFactory.updateClassifield = function (clsdata) {
-          return $http.put(urlBase + clsdata._id, clsdata);
+          return $http.put(urlBase + '/' + clsdata._id, clsdata);
       };
 
       dataFactory.deleteClassifield= function (c) {
-          return $http.delete(urlBase + c._id);
+          return $http.delete(urlBase + '/' +  c._id);
       };
 
       return dataFactory;

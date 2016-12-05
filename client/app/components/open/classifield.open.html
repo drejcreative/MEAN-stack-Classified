@@ -6,7 +6,7 @@
   <md-content layout-padding>
     <img class="test" ng-src="{{ cls.clsdata.image }}" alt="">
     <h3>{{ cls.clsdata.title }}</h3>
-    <p>{{ cls.clsdata.posted }}</p>
+    <p>{{ cls.clsdata.posted | date }}</p>
     <p>{{ cls.clsdata.categories[0] }}</p>
     <p>{{ cls.clsdata.description }}</p>
 
