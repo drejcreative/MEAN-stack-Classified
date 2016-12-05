@@ -61,6 +61,13 @@
         });
       };
 
+      self.openClassifield = function(c) {
+        $state.go('classifields.open', {
+          id: c.id,
+          classifield: c
+        });
+      };
+
       //Delete Classifield
       self.deleteClassifield = function(event, c) {
         var confirm = $mdDialog.confirm()

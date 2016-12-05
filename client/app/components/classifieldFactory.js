@@ -4,7 +4,7 @@
     .module('angularCls')
     .factory('classifieldsFactory', function($http) {
 
-      var urlBase = 'http://localhost:3000/classifields/';
+      var urlBase = 'http://localhost:3000/classifields';
       var dataFactory = {};
 
       // Get data from server

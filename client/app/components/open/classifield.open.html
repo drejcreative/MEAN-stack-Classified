@@ -1,0 +1,29 @@
+<md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right"
+            md-is-open="cls.sidenavOpen">
+  <md-toolbar>
+    <h2 class="md-toolbar-tools">Description</h2>
+  </md-toolbar>
+  <md-content layout-padding>
+    <img class="test" ng-src="{{ cls.clsdata.image }}" alt="">
+    <h3>{{ cls.clsdata.title }}</h3>
+    <p>{{ cls.clsdata.posted }}</p>
+    <p>{{ cls.clsdata.categories[0] }}</p>
+    <p>{{ cls.clsdata.description }}</p>
+
+    <div layout="row">
+      <md-button class="md-primary md-raised" ng-click="showContact = !showContact">
+        Contact
+      </md-button>
+      <md-button class="md-warn" ng-click="cls.closeSidebar()">
+        Cancel
+      </md-button>
+    </div>
+    <div class="cls-contact" ng-show="showContact">
+      <p><i class="fa fa-user" aria-hidden="true"></i>{{ cls.clsdata.contact.name }}</p>
+      <p><i class="fa fa-phone" aria-hidden="true"></i>{{ cls.clsdata.contact.phone }}</p>
+      <p><i class="fa fa-envelope" aria-hidden="true"></i>{{ cls.clsdata.contact.email }}</p>
+    </div>
+
+
+  </md-content>
+</md-sidenav>

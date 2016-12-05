@@ -1,10 +1,31 @@
 @import "../../bower_components/angular-material/angular-material.scss";
 
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+      width:  $size;
+      height: $size;
+  }
+  ::-webkit-scrollbar-thumb {
+      background: $foreground-color;
+  }
+  ::-webkit-scrollbar-track {
+      background: $background-color;
+  }
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
 *,
 :after,
 :before {
   box-sizing: border-box;
 }
+
+@include scrollbars(0.75em, rgb(255,152,0));
 
 .clearfix {
   &:after,
@@ -109,6 +130,10 @@ md-progress-circular {
     color: rgb(255,87,34);
   }
 }//sort
+
+.test {
+  max-width: 90%;
+}
 /*=============================================
   keyframes
 =============================================*/

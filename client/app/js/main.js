@@ -21,5 +21,12 @@ angular
       params: {
         classifield: null
       }
+    }).state('classifields.open', {
+      url: 'open/:id',
+      templateUrl: 'components/open/classifield.open.html',
+      controller: 'openClassifiledController as cls',
+      params: {
+        classifield: null
+      }
     });
 });

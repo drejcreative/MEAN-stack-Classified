@@ -1,4 +1,9 @@
-
+<!--
+=============================================
+  Sidenav
+=============================================
+-->
+  <ui-view style="height:100%;"></ui-view>
 <!--
 =============================================
   Toolbar
@@ -66,20 +71,16 @@
       </md-button>
     </div>
   </div>
-<!--
-=============================================
-  Sidenav
-=============================================
--->
-  <ui-view></ui-view>
+
 <!--
 =============================================
   Cards
 =============================================
 -->
-  <md-content class="md-padding" layout="row" layout-wrap>
+  <md-content class="md-padding classifleld-wrap" layout="row" layout-wrap>
 
-    <md-card class="card" dir-paginate="c in cls.classifields |
+    <md-card class="card md-whiteframe-4dp"
+                          dir-paginate="c in cls.classifields |
                                         filter: classifieldFilter |
                                         filter: categoryList |
                                         orderBy: cls.sortType:sortReverse |
@@ -114,7 +115,7 @@
           <md-button class="md-icon-button" aria-label="Favorite">
             <md-icon md-svg-icon="images/favorite-heart-button.svg"></md-icon>
           </md-button>
-          <md-button class="md-icon-button" aria-label="Share">
+          <md-button ng-click="cls.openClassifield(c)" class="md-icon-button" aria-label="Share">
             <md-icon md-svg-icon="images/share-option.svg"></md-icon>
           </md-button>
       </md-card-actions>
