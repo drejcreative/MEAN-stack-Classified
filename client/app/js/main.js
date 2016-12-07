@@ -28,5 +28,9 @@ angular
       params: {
         classifield: null
       }
+    }).state('login', {
+      url: 'login/',
+      templateUrl: 'components/user/login.html',
+      controller: 'loginController as cls',
     });
 });

@@ -1,0 +1,58 @@
+<div layout="column" layout-align="center center">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Login</h2>
+    </div>
+  </md-toolbar>
+
+    <form name="loginForm">
+      <div layout="row">
+        <md-input-container class="md-block" flex="90">
+          <label for="name">Full name</label>
+          <input required type="text"
+                 class="form-control"
+                 id="name" placeholder="Enter your name"
+                 ng-model="cls.credentials.name">
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container class="md-block" flex="90">
+          <label for="email">Email address</label>
+          <input required type="email"
+                 class="form-control"
+                 id="email" placeholder="Enter email"
+                 ng-pattern="/^.+@.+\..+$/"
+                 ng-model="cls.credentials.email">
+                 <div ng-messages="cls.credentials.email.$error" role="alert">
+                     <div ng-message-exp="['required', 'pattern']">
+                         Your email must be between 10 and 100 characters long and look like an e-mail address.
+                     </div>
+                 </div>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container class="md-block" flex="90">
+          <label for="password">Password</label>
+          <input required type="password"
+                 minlength="6"
+                 maxlength="16"
+                 class="form-control"
+                 id="password" placeholder="Password"
+                 ng-model="cls.credentials.password">
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-button md-autofocus flex type="submit" class="md-raised md-primary" ng-click="cls.loginSubmit()">
+          Login
+        </md-button>
+        <md-button md-autofocus flex type="submit" class="md-primary">
+          Register
+        </md-button>
+        <md-button md-autofocus flex class="md-raised md-warn" ng-click="cls.close()">
+          Close
+        </md-button>
+      </div>
+    </form>
+
+
+</div>

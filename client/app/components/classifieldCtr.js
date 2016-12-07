@@ -3,9 +3,10 @@
 
   angular
     .module("angularCls")
-    .controller("ClassifiledController", function($scope, $http, $state, classifieldsFactory, $mdSidenav, $mdToast, $mdDialog) {
+    .controller("ClassifiledController", function($scope, $http, $state, classifieldsFactory, $mdSidenav, $mdToast, $mdPanel, $mdDialog) {
 
       var self = this; //cls.
+      self._mdPanel = $mdPanel;
 
       console.log(self.classifields);
       //Geting data from server
@@ -25,6 +26,11 @@
       self.openSidebar = function() {
         $state.go('classifields.new');
         //$mdSidenav('left').toggle();
+      };
+
+      //open login
+      self.login = function() {
+        $state.go('login');
       };
 
       //Save classifields
@@ -90,7 +96,6 @@
 
         });
       };
-
 
       //Show toast message
       function showToast(message) {

@@ -5,10 +5,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
 
+var user = require('./routes/users');
 var index = require('./routes/index');
-var users = require('./routes/users');
 var classifields = require('./routes/classifields');
+var pass = require('./config/passport');
 
 var app = express();
 
@@ -34,8 +36,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-
-app.use('/users', users);
+app.use(passport.initialize());
+app.use('/users', user);
 app.use('/classifields', classifields);
 
 /**
@@ -55,6 +57,15 @@ if (app.get('env') === 'development') {
             message: err.message,
             error: err
         });
+    });
+
+    // error handlers
+    // Catch unauthorised errors
+    app.use(function (err, req, res, next) {
+      if (err.name === 'UnauthorizedError') {
+        res.status(401);
+        res.json({"message" : err.name + ": " + err.message});
+      }
     });
 }
 
